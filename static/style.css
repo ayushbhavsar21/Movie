@@ -1,0 +1,19 @@
+/* styles.css */
+body{
+    background: aquamarine;
+}
+
+.movie-container {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.movie-container img {
+    width: 200px;
+    height: auto;
+}
+
+.hidden {
+    display: none;
+}

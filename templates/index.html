@@ -1,0 +1,84 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <h1>Movie Recommender System</h1>
+    <div id="selection">
+        <label for="movie-select">Select a movie:</label>
+        <select id="movie-select">
+            {% for movie in movies %}
+            <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select>
+        <button id="recommend-btn">Show Recommendation</button>
+    </div>
+    <div id="recommendations" class="hidden">
+        <div class="movie-container" id="movie1">
+            <span class="movie-title"></span>
+            <img class="movie-poster">
+        </div>
+        <div class="movie-container" id="movie2">
+            <span class="movie-title"></span>
+            <img class="movie-poster">
+        </div>
+        <div class="movie-container" id="movie3">
+            <span class="movie-title"></span>
+            <img class="movie-poster">
+        </div>
+        <div class="movie-container" id="movie4">
+            <span class="movie-title"></span>
+            <img class="movie-poster">
+        </div>
+        <div class="movie-container" id="movie5">
+            <span class="movie-title"></span>
+            <img class="movie-poster">
+        </div>
+    </div>
+
+    <!-- <script>
+        // script.js
+        document.addEventListener('DOMContentLoaded', function () {
+            const recommendBtn = document.getElementById('recommend-btn');
+            const movieSelect = document.getElementById('movie-select');
+            const recommendationsDiv = document.getElementById('recommendations');
+
+            recommendBtn.addEventListener('click', function () {
+                console.log("Clicked")
+                const selectedMovie = movieSelect.value;
+                fetch('/recommend', {
+                    method: 'POST',
+                    body: JSON.stringify({ movie: selectedMovie }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        showRecommendations(data);
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+
+            function showRecommendations(recommendations) {
+                recommendationsDiv.classList.remove('hidden');
+                recommendations.forEach((recommendation, index) => {
+                    const movieContainer = document.getElementById(`movie${index + 1}`);
+                    movieContainer.querySelector('.movie-title').textContent = recommendation.name;
+                    movieContainer.querySelector('.movie-poster').src = recommendation.poster;
+                });
+            }
+        });
+
+    </script> -->
+    <script src="../static/script.js" ></script>
+</body>
+
+</html>
