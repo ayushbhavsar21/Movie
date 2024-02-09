@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify,abort
 import pickle
 import requests
 app = Flask(__name__, static_url_path='/static')
@@ -9,6 +9,10 @@ app = Flask(__name__, static_url_path='/static')
 def index():
     movies = pickle.load(open('./movie_list.pkl', 'rb'))
     return render_template('index.html', movies=movies['title'].values)
+
+@app.route('/favicon.ico')
+def favicon():
+    abort(404)
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
